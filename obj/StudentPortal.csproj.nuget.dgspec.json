@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\absol\\Desktop\\Simple Asp.Net Project\\StudentPortal\\StudentPortal\\StudentPortal.csproj": {}
+    "/home/bital/Documents/student-portal/StudentPortal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\absol\\Desktop\\Simple Asp.Net Project\\StudentPortal\\StudentPortal\\StudentPortal.csproj": {
+    "/home/bital/Documents/student-portal/StudentPortal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\absol\\Desktop\\Simple Asp.Net Project\\StudentPortal\\StudentPortal\\StudentPortal.csproj",
+        "projectUniqueName": "/home/bital/Documents/student-portal/StudentPortal.csproj",
         "projectName": "StudentPortal",
-        "projectPath": "C:\\Users\\absol\\Desktop\\Simple Asp.Net Project\\StudentPortal\\StudentPortal\\StudentPortal.csproj",
-        "packagesPath": "C:\\Users\\absol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\absol\\Desktop\\Simple Asp.Net Project\\StudentPortal\\StudentPortal\\obj\\",
+        "projectPath": "/home/bital/Documents/student-portal/StudentPortal.csproj",
+        "packagesPath": "/home/bital/.nuget/packages/",
+        "outputPath": "/home/bital/Documents/student-portal/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\absol\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/bital/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,13 +32,7 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.100"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -84,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.122/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
