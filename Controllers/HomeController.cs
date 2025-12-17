@@ -15,7 +15,11 @@ namespace StudentPortal.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (HttpContext.Session.GetString("AdminLoggedIn") == "true")
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "Account");
         }
 
         public IActionResult Privacy()

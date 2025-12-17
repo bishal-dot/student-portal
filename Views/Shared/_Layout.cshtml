@@ -25,10 +25,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="List">All Students</a>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Add">Add</a>
-                        </li>
-                        
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Add">Add Student</a>
+                        </li>  
                     </ul>
+                    <span class="d-flex align-items-center gap-3">
+                        <span class="fw-bold">
+                            @Context.Session.GetString("AdminFullname")
+                        </span>
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-outline-danger">Logout</a>
+                    </span>
                 </div>
             </div>
         </nav>
