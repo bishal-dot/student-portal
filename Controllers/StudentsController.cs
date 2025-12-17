@@ -22,8 +22,14 @@ namespace StudentPortal.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Add(AddStudentViewModel viewModel)
         {
+            if(!ModelState.IsValid)
+            {
+                return Json(new { success = false, message = "Invalid data submitted" });
+            }
+            
             var student = new Models.Entities.Student
             {
                 Name = viewModel.Name,
@@ -34,7 +40,7 @@ namespace StudentPortal.Controllers
             await dbContext.Students.AddAsync(student);
             await dbContext.SaveChangesAsync();
 
-            return View();
+            return Json(new { success = true, message = "Student added successfully" });
         }
 
         [HttpGet]
@@ -66,22 +72,27 @@ namespace StudentPortal.Controllers
 
                 await dbContext.SaveChangesAsync();
             }
+            // return Json(new { success = true, message = "Student updated successfully" });
 
             return RedirectToAction("List" , "Students");
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(Guid Id)
         {
             var student = await dbContext.Students.FindAsync(Id);
 
-            if (student is not null)
+            if (student is  null)
             {
-                dbContext.Students.Remove(student);
-                await dbContext.SaveChangesAsync();
+                return Json(new { success = false, message = "Student not found" });
             }
 
-            return RedirectToAction("List", "Students");
+            dbContext.Students.Remove(student);
+            await dbContext.SaveChangesAsync();
+
+            // return RedirectToAction("List", "Students");
+            return Json(new { success = true, message = "Student deleted successfully" });
         }
 
 

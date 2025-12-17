@@ -13,7 +13,11 @@
     <p>No student was found with this Id </p>
 }
 else{
-<form method="post">
+<div>
+    <h4>Editing Student: @Model.Name</h4>
+</div>
+<form method="post" id=editStudentForm 
+    asp-action="Edit" asp-controller="Students">
     <div class="mt-3">
         <label>Id</label>
         <input type="text" class="form-control" placeholder="Enter student name" asp-for="Id" readonly />
@@ -34,5 +38,32 @@ else{
     <button type="submit" class="btn btn-primary mt-3">Update</button>
     <button class="btn btn-secondary mt-3 ms-2">Cancel</button>
 </form>
+<div id="resultMessage" class="mt-3"></div>
 }
 
+@* Jquery CDN *@
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e){
+        $('#editStudentForm').submit(function(e){
+            e.preventDefault();
+
+            $.ajax({
+                url:'/Students/Edit',
+                type:'POST',
+                data: $(this).serialize(), //sends viewmodel data to controller
+                success: function(response){
+                    if(response.success){
+                        $('#resultMessage').text(response.message).css('color','green');
+                        alert("Student Info Edited Successfully");
+                    }
+                    else{
+                        $('#resultMessage').text(response.message).css('color','red');
+                    }
+                error: function(){
+                    alert("An error occurred while processing your request.");
+                }
+            })
+        }))
+    })
+</script>

@@ -7,7 +7,9 @@
 @model StudentPortal.Models.AddStudentViewModel
 
 <h1>Add New Student</h1>
-<form method="post">
+<form id="addStudentForm" 
+    method="post" asp-action="Add" asp-controller="Students">
+    @Html.AntiForgeryToken()
         
     <div class="mt-3">
         <label>Name</label>
@@ -22,5 +24,40 @@
         <input type="text" class="form-control" placeholder="Enter student phone" asp-for="Phone"/>
     </div>
     <button type="submit" class="btn btn-primary mt-3">Add Student</button>
-    <button class="btn btn-secondary mt-3 ms-2">Cancel</button>
+    <a class="btn btn-secondary mt-3 ms-2" href="/Students/List">Cancel</a>
 </form>
+<div id="resultMessage" class="mt-3"></div>
+
+@* jquery CDn *@
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+
+        $('#addStudentForm').submit(function(e){
+        e.preventDefault();
+
+        $.ajax({
+            url:'/Students/Add',
+            type:'POST',
+            data:$(this).serialize(), //sends viewmodel data to controller
+            success: function(response){
+                if(response.success){
+                    $('#resultMessage').html(`
+                        <div class="alert alert-success">Student Added Succesfully</div>
+                    `);
+
+                    $('#addStudentForm')[0].reset(); //reset form fields
+                }
+                else{
+                    $('#resultMessage').html(`
+                        <div class="alert alert-danger">${response.message}</div>
+                    `);
+                }
+            },
+            error: function(){
+                alert("An error occurred while processing your request.");
+            }
+        });
+        });
+    });
+</script>
