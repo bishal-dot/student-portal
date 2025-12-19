@@ -14,6 +14,17 @@ options.UseMySql(
 
 builder.Services.AddSession();
 
+builder.Services.AddCors( options =>
+{
+    options.AddPolicy(
+        "AllowFlutter", policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +41,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseSession();
+
+app.UseCors("AllowFlutter");
 
 app.UseAuthorization();
 
